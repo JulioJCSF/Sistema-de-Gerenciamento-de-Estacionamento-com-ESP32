@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "author": "Júlio Fernandes",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 74.66,
+      "left": -137.09,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 203.57,
+      "left": -0.48,
+      "attrs": { "color": "green", "flip": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 202.53,
+      "left": 67.03,
+      "attrs": { "color": "red", "flip": "" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 75.33,
+      "left": 150.09,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 275.87,
+      "left": -27.89,
+      "attrs": { "distance": "145" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -63.13,
+      "left": -225.43,
+      "rotate": 180,
+      "attrs": { "hornColor": "green" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo2",
+      "top": -55.17,
+      "left": 157.39,
+      "rotate": 180,
+      "attrs": { "hornColor": "red" }
+    },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": -98.64,
+      "left": 34.47,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 210.84,
+      "left": -42.25,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 212.45,
+      "left": 89.9,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:VCC", "esp:3V3", "red", [ "v16", "h109.59", "v-224.54" ] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "v-1.59", "h74.56", "v-222.87" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h11", "v148.49" ] ],
+    [ "servo1:V+", "esp:VIN", "red", [ "h17.88", "v167.49" ] ],
+    [ "servo2:V+", "esp:3V3", "red", [ "h8.33", "v143.27" ] ],
+    [ "servo2:GND", "esp:GND.1", "black", [ "h2.44", "v128.62" ] ],
+    [ "servo2:PWM", "esp:D15", "green", [ "h19.65", "v137.07" ] ],
+    [ "ultrasonic1:TRIG", "esp:D13", "green", [ "v9.27", "h-89.48", "v-241.7" ] ],
+    [ "ultrasonic1:ECHO", "esp:D12", "green", [ "v14.09", "h-105.26", "v-251.33" ] ],
+    [ "servo1:PWM", "esp:D14", "green", [ "h26.46", "v118.15", "h135.64", "v20.34" ] ],
+    [ "btn1:2.r", "esp:GND.2", "black", [ "h-2.15", "v46.57" ] ],
+    [ "btn1:1.r", "esp:D27", "green", [ "v-0.34", "h13.85", "v29.75" ] ],
+    [ "btn2:2.l", "esp:GND.1", "black", [ "h-3.17", "v44.55" ] ],
+    [ "btn2:1.l", "esp:D2", "green", [ "h-10.13", "v43.93" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v11.37", "h7.02", "v-56.43", "h-34.07", "v-51.51" ] ],
+    [ "led2:C", "esp:GND.1", "black", [ "v11.04", "h-7.76", "v-54.64", "h36.2", "v-51.23" ] ],
+    [ "led1:A", "r1:2", "green", [ "v0" ] ],
+    [ "r1:1", "esp:D26", "green", [ "h-0.37", "v-84.83" ] ],
+    [ "led2:A", "r2:2", "green", [ "v0" ] ],
+    [ "r2:1", "esp:D4", "green", [ "h-2.34", "v-68.06" ] ],
+    [ "sevseg1:COM.1", "esp:GND.2", "black", [ "v31.06", "h-43.89", "v144.76" ] ],
+    [ "sevseg1:C", "esp:D19", "green", [ "v26.1", "h50.78", "v2.35" ] ],
+    [ "sevseg1:DP", "esp:D21", "green", [ "v15.41", "h33.55", "v75.54" ] ],
+    [ "sevseg1:B", "esp:D18", "green", [ "v-2.11", "h8.93", "v78.88", "h37.98", "v100.59" ] ],
+    [ "sevseg1:A", "esp:D5", "green", [ "v-8.79", "h26.88", "v78.05", "h35.89", "v113.53" ] ],
+    [ "sevseg1:D", "esp:D25", "green", [ "v25.68", "h-59.74", "v93.63", "h1.86" ] ],
+    [ "sevseg1:E", "esp:D33", "green", [ "v20.1", "h-43.94", "v89.91" ] ],
+    [ "sevseg1:F", "esp:D23", "green", [ "v-15.55", "h53.3", "v78.36", "h36.09", "v55.67" ] ],
+    [ "sevseg1:G", "esp:D22", "green", [ "v-20.7", "h70.12", "v77.84", "h34.54", "v69.08" ] ]
+  ],
+  "dependencies": {}
+}
